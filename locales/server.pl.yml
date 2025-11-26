@@ -1,0 +1,4 @@
+pl:
+  site_settings:
+    domain_locale_enabled: "Włącz automatyczne wykrywanie języka na podstawie domeny"
+    domain_locale_mappings: "Mapowanie domen na języki (format: domena:język|domena:język)"

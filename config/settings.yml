@@ -1,0 +1,9 @@
+plugins:
+  domain_locale_enabled:
+    default: true
+    client: true
+  domain_locale_mappings:
+    default: 'forum.howicured.org:en|forum.jakwyleczylem.pl:pl'
+    type: string
+    client: false
+    description: 'Domain to locale mappings in format: domain1:locale1|domain2:locale2'

@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    domain_locale_enabled: "Enable automatic locale detection based on domain"
+    domain_locale_mappings: "Domain to locale mappings (format: domain:locale|domain:locale)"
