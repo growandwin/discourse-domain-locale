@@ -1,23 +1,9 @@
-# name: discourse-domain-locale
-# about: Automatically sets locale based on domain name
-# version: 1.0.0
-# authors: Your Name
-# url: https://github.com/yourusername/discourse-domain-locale
-
 enabled_site_setting :domain_locale_enabled
 
 after_initialize do
   
-  # Add site settings for domain-to-locale mapping
-  require_dependency 'application_controller'
-  
   module ::DiscourseDomainLocale
     PLUGIN_NAME ||= "discourse-domain-locale".freeze
-    
-    class Engine < ::Rails::Engine
-      engine_name PLUGIN_NAME
-      isolate_namespace DiscourseDomainLocale
-    end
   end
   
   # Hook into ApplicationController to set locale before each request
@@ -37,18 +23,11 @@ after_initialize do
         I18n.locale = locale
         
         # For logged-out users, set a cookie so it persists
-        if !current_user
+        unless current_user
           cookies[:locale] = {
             value: locale,
-            expires: 1.year.from_now,
-            domain: :all
+            expires: 1.year.from_now
           }
-        end
-        
-        # Optional: Update logged-in user's preference if different
-        if current_user && current_user.locale != locale
-          # Only update if user hasn't manually set a preference
-          # You can add additional logic here if needed
         end
       end
     end
